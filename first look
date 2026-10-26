@@ -1,0 +1,76 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class x {
+public:
+string z1, z2;
+int d1, d2;
+};
+
+class y {
+public:
+void msg() {
+cout << endl << " Welcome to Rock-Paper-Scissors " << endl;
+}
+};
+
+int main() {
+y obj;
+obj.msg();
+
+string p1, p2;
+cout << "Enter Player 1 Name: ";
+cin >> p1;
+cout << "Enter Player 2 Name: ";
+cin >> p2;
+
+x data;
+data.d1 = 0;
+data.d2 = 0;
+
+char choiceLoop;
+int rCount = 1;
+
+do {
+cout << endl << "--- Round " << rCount << " ---" << endl;
+cout << p1 << ", enter choice: ";
+cin >> data.z1;
+cout << p2 << ", enter choice: ";
+cin >> data.z2;
+
+if (data.z1 == data.z2) {
+cout << "Round Result: It's a draw" << endl;
+} else if ((data.z1 == "Rock" && data.z2 == "Scissors") || 
+           (data.z1 == "Paper" && data.z2 == "Rock") || 
+           (data.z1 == "Scissors" && data.z2 == "Paper")) {
+cout << "Round Result: " << p1 << " wins this round" << endl;
+data.d1++;
+} else {
+cout << "Round Result: " << p2 << " wins this round" << endl;
+data.d2++;
+}
+
+cout << "Current Score -> [" << p1 << ": " << data.d1 << "] | [" << p2 << ": " << data.d2 << "]" << endl;
+
+cout << endl << "Do you want to play another round? (y/n): ";
+cin >> choiceLoop;
+rCount++;
+
+} while (choiceLoop == 'y' || choiceLoop == 'Y');
+
+cout << endl << "             FINAL SCOREBOARD            " << endl;
+cout << p1 << " : " << data.d1 << endl;
+cout << p2 << " : " << data.d2 << endl;
+
+if (data.d1 > data.d2) {
+cout << "Congratulations " << p1 << "! You are the winner!" << endl;
+} else if (data.d2 > data.d1) {
+cout << "Congratulations " << p2 << "! You are the winner!" << endl;
+} else {
+cout << "The game ended in an overall draw!" << endl;
+}
+
+return 0;
+}
